@@ -36,60 +36,59 @@ We used data from January 2015 to March 2022 (87 samples in total) as the traini
 ## Folder structure
 The project folder structure and its comments are as follows:   
 
-$$
-\left\{ \begin{array}{l}
-\text{README.md \qquad \# \; Introduction of data, code and detailed experimental process.}\\
-\text{Collect\_data}\left\{ \begin{array}{l}
-\text{Get\_search\_data}\left\{ \begin{array}{l}
-\text{tmp/ \qquad\# \; Save intermediate process files.}\\
-\text{Merged\_data/  \qquad \# \; Save the merged and sorted search engine data tables.}\\
-\text{Get\_search.ipynb \qquad \# \;  Used to crawl Baidu index data.}\\
-\end{array} \right.\\
-\text{Get\_reviews}\left\{ \begin{array}{l}
-\text{UserAgent\_set.pickle \qquad \# \; Necessary components.}\\
-\text{Get\_reviews.ipynb \qquad \# \; Used to crawl online review data.}\\
-\text{Reviews/ \qquad \# \; Save textual review data tables.}
-\end{array} \right.\\
-\text{Other\_features}\left\{ \begin{array}{l}
-\text{Macro\_90.wet \qquad \# \; Template for downloading macroeconomic data from Wind database.}\\
-\text{Macro\_data.xlsx \qquad \# \; Downloaded and processed macroeconomic data.}\\
-\text{Sales\_data/ \qquad \# \; Downloaded and processed history sales data.}
-\end{array} \right.
-\end{array} \right.\\
-\text{Preprocess\_data}\left\{ \begin{array}{l}
-\text{cache/ \qquad \# \; Save intermediate process files.}\\
-\text{Describe\_sales\_data.ipynb \qquad \# \; Make descriptive statistics on sales data.}\\
-\text{Filter\_results/ \qquad \# \; Time difference correlation analysis results.}\\
-\text{Numerical\_feature\_engineering.ipynb \qquad \# \; Select numerical features by time difference correlation analysis.}\\
-\text{Preprocess\_data.ipynb \qquad \# \; Combine and process numerical and textual feature data to form the input required by subsequent programs.}\\
-\text{Inputs\_data/ \qquad \# \; Save the generated model inputs.}
-\end{array} \right.\\
-\text{Methods}\left\{ \begin{array}{l}
-\text{utils.py \qquad \# \; Some tool functions.}\\
-\text{HyperParams.py \qquad \# \; Selected hyperparameter combinations.}\\
-\text{Roberts\_TD3\_Trans.py \qquad \# \; Network structures of our method, and the TD3 algorithm.}\\
-\text{Roberts\_TD3\_MLP.py \qquad \# \; Network structures of the ablation method without Transformer, and the TD3 algorithm.}\\
-\text{EDD.py \qquad \# \;  Empirical demand distribution.}\\
-\text{KO\_Ban2018.py \qquad \# \;  Kernel optimization (KO) (Ban and Rudin, 2018).}\\
-\text{LML\_Ban2018.py \qquad \# \;  Linear machine learning (LML) (Ban and Rudin, 2018).}\\
-\text{DNN\_Afshin2019.py \qquad \# \;  Deep neural network (DNN) (Oroojlooyjadid et al., 2019).}\\
-\text{E2E\_Tian2023.py \qquad \# \;  The E2E method proposed by Tian and Zhang (2023).}\\
-\text{Forecast\_TransX.py \qquad \# \; Use our network structure to forecast demand as a benchmark.}\\
-\text{Trans\_Run.py \qquad \# \;  The ablation method without numerical features.}\\
-\text{X\_Run.py \qquad \# \;  The ablation method without textual reviews.}\\
-\text{TransX\_Run.py \qquad \# \;  Our method.}\\
-\text{RUN.py \qquad \# \;  The main program of running above all methods.}\\
-\text{checkpoints/ \qquad \# \; Save the trained models.}\\
-\text{Logs/ \qquad \# \; Curves of training processes.}
-\end{array} \right.\\
-\text{Outputs/ \qquad \# \; Save the test results.}\\
-\text{Analysis}\left\{ \begin{array}{l}
-\text{Analysis\_Benchmarks.ipynb \qquad \# \; Compare with other methods, and draw the diagrams and tables in the paper.}\\
-\text{utils.py \qquad \# \; Some tool functions.}\\
-\text{Paper\_outputs/ \qquad \# \; Save the pictures and tables in the paper.}
-\end{array} \right.
-\end{array} \right.
-$$
+```
+.
+│  README.md    # Introduction of data and code.
+│
+├─Analysis
+│  │  Analysis_Benchmarks.ipynb    # Compare with other methods, and draw the diagrams and tables in the paper
+│  │  utils.py    # Some tool functions.
+│  │
+│  └─Paper_outputs\    # Save the pictures and tables in the paper.
+├─Collect_data
+│  ├─Get_reviews
+│  │  │  Get_reviews.ipynb    # Used to crawl online review data.
+│  │  │  UserAgent_set.pickle    # Necessary components.
+│  │  │
+│  │  └─Reviews\    # Save textual review data tables.
+│  ├─Get_search_data
+│  │  │  Get_search.ipynb    #  Used to crawl Baidu index data.
+│  │  │
+│  │  ├─Merged_data\    # Save the merged and sorted search engine data tables.
+│  │  └─tmp\    # Save intermediate process files.
+│  └─Other_features
+│      │  Macro_90.wet    # Template for downloading macroeconomic data from Wind database.
+│      │  Macro_data.xlsx    # Downloaded and processed macroeconomic data.
+│      │
+│      └─Sales_data\    # Downloaded and processed history sales data.
+├─Methods
+│  │  DNN_Afshin2019.py    # Deep neural network (DNN) (Oroojlooyjadid et al., 2019).
+│  │  E2E_Tian2023.py    # The E2E method proposed by Tian and Zhang (2023).
+│  │  EDD.py    # Empirical demand distribution.
+│  │  Forecast_TransX.py    # Use our network structure to forecast demand as a benchmark.
+│  │  HyperParams.py    # Selected hyperparameter combinations.
+│  │  KO_Ban2018.py    # Kernel optimization (KO) (Ban and Rudin, 2018).
+│  │  LML_Ban2018.py    # Linear machine learning (LML) (Ban and Rudin, 2018).
+│  │  Roberts_TD3_MLP.py    # Network structures of the ablation method without Transformer, and the TD3 algorithm.
+│  │  Roberts_TD3_Trans.py    # Network structures of our method, and the TD3 algorithm.
+│  │  RUN.py    # The main program of running above all methods.
+│  │  TransX_Run.py    # Our method.
+│  │  Trans_Run.py    # The ablation method without numerical features.
+│  │  utils.py    # Some tool functions.
+│  │  X_Run.py    # The ablation method without textual reviews.
+│  │
+│  ├─checkpoints\    # Save the trained models.
+│  └─Logs\    # Curves of training processes.
+├─Outputs\    # Save the test results.
+└─Preprocess_data
+    │  Describe_sales_data.ipynb    # Make descriptive statistics on sales data.
+    │  Numerical_feature_engineering.ipynb    # Select numerical features by time difference correlation analysis.
+    │  Preprocess_data.ipynb    # Combine and process numerical and textual feature data to form the input required by subsequent programs.
+    │
+    ├─cache\    # Save intermediate process files.
+    ├─Filter_results\    # Time difference correlation analysis results.
+    └─Inputs_data\    # Save the generated model inputs.
+```
 
 ## Workflow
 
