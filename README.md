@@ -34,7 +34,8 @@ To run the code, you will need to make sure that you have the following dependen
 We used data from January 2015 to March 2022 (87 samples in total) as the training set. Data from April 2022 to March 2023 served as the validation set for determining hyperparameter values. Subsequently, data from April 2023 to March 2024 formed the test set for evaluating the method's performance and conducting experimental comparisons. The historical sales were used as historical demand during training. 
 
 ## Folder structure
-The project folder structure and its comments are as follows:     
+The project folder structure and its comments are as follows:   
+
 $$
 \left\{ \begin{array}{l}
 \text{README.md \qquad \# \; Introduction of data, code and detailed experimental process.}\\
