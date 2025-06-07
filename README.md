@@ -17,7 +17,3 @@ We investigate the problem of multi-period inventory decision-making driven by m
 To run the code, you will need to make sure that you have the following dependencies installed: 
 
 `Python 3.11`,  `Cuda 11.2.128`,  `PyTorch 2.0.1`, `numpy`, `pandas`, `jupyter`, `notebook`, `selenium`, `requests`, `calendar`, `xlwt`, `urllib`, `json`, `scipy`, `scikit-learn`, `jieba`, `matplotlib`, `docplex`, `matplotlib`, `xlsxwriter`
-
-<center class="half">
-    <img src="https://github.com/Jesse-tien/WET_TD3_Inventory/blob/main/Figures/AblationBox_Lavida.png?raw=true" width="200"/><img src="https://github.com/Jesse-tien/WET_TD3_Inventory/blob/main/Figures/AblationBox_Emgrand.png?raw=true" width="200"/><img src="https://github.com/Jesse-tien/WET_TD3_Inventory/blob/main/Figures/AblationBox_HavalH6.png?raw=true" width="200"/><img src="https://github.com/Jesse-tien/WET_TD3_Inventory/blob/main/Figures/AblationBox_All_products.png?raw=true" width="200"/>
-</center>
