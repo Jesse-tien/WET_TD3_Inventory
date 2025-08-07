@@ -20,9 +20,9 @@ To run the code, you will need to make sure that you have the following dependen
 
 `Python 3.11`,  `Cuda 11.2.128`,  `PyTorch 2.0.1`, `numpy`, `pandas`, `jupyter`, `notebook`, `selenium`, `requests`, `calendar`, `xlwt`, `urllib`, `json`, `scipy`, `scikit-learn`, `jieba`, `matplotlib`, `docplex`, `matplotlib`, `xlsxwriter`
 
-## 2. Experimental details
+## 2. Supplemental materials
 
-### A. The time difference correlation analysis (TDCA) method
+### Appendix A. The time difference correlation analysis (TDCA) method
 
 This section introduces the principles and process of feature selection using the TDCA method. Denote the total candidate feature number as $N\_f$, let $L$ ($L>0$) represent the lag period of a feature sequence ahead of the arrival time, and $L\_{\\text{max}}$ be the maximum lag period ($L\\le L\_{\\text{max}}$). The expression of the candidate feature set is 
 
@@ -48,7 +48,7 @@ $\\mathbf{X}\_t=\\left(x\_{1,t},x\_{2,t},\\ldots,x\_{N\_p,t} \\right)$.  (A.3)
 
 Here, the screening thresholds and relevant removal criteria are hyperparameters determined through repeated experiments.
 
-### B. Candidate macroeconomic indicators and Baidu indices
+### Appendix B. Candidate macroeconomic indicators and Baidu indices
 
 The candidate features before being screened using the TDCA method include 86 macroeconomic indicators and keywords from the Baidu search indices, as shown in Table B.1 and Table B.2, respectively.
 
@@ -110,7 +110,7 @@ The candidate features before being screened using the TDCA method include 86 ma
 | Haval H6  | 哈弗h6 (Haval H6), 哈弗h6报价 (Haval H6 Quote), 哈弗h6怎么样 (How About Haval H6), 哈弗h6运动版 (Haval H6 Sport Edition), 哈弗h6油耗 (Fuel Consumption of Haval H6), 哈弗h6新款 (New Version of Haval H6), 哈弗 (Haval), 哈弗汽车 (Haval Cars), 哈弗官网 (Official Website of Haval) |
 | Camry  | 凯美瑞 (Camry), 凯美瑞油耗 (Fuel Consumption of Camry), 凯美瑞怎么样 (How about Camry?), 凯美瑞论坛 (Camry Forum), 凯美瑞2.0 (Camry 2.0), 凯美瑞多少钱 (How Much Is Camry), 凯美瑞报价 (Camry Quote), 凯美瑞 汽车 (Camry Automobile), 丰田凯美瑞 (Toyota Camry), 丰田凯美瑞报价 (Toyota Camry Quote) |
 
-### C. Description of benchmark methods
+### Appendix C. Description of benchmark methods
 
 In our experiments, the benchmark methods used for comparison include the $(S,s)$, DQN, A2C, SAC, PPO, and DDPG. Detailed descriptions are as follows:
 
@@ -130,7 +130,7 @@ where $\Phi^{-1}$ is the inverse of the standard normal distribution, and $\mu$ 
 
 (6) DDPG (Deep Deterministic Policy Gradient) (Lillicrap et al., 2016): This off-policy algorithm combines deep neural networks with deterministic policy gradients, directly generating continuous replenishment actions via an Actor-Critic architecture. It consists of a deterministic Actor network and a Critic network for Q-value estimation. Unlike DQN, which operates on a discrete action space, DDPG supports continuous action outputs, eliminating discretization bias. Compared with SAC's stochastic policy, DDPG's deterministic policy is more efficient under stable demand conditions. As the foundation of the TD3 algorithm used in this study, DDPG exhibits certain limitations in continuous action space control: it uses only a single Critic network, making its value estimation prone to overestimation. Additionally, its simultaneous updates of the Actor and Critic networks introduce instability, and it lacks the target policy smoothing regularization employed by TD3. In inventory management scenarios, DDPG demonstrates lower convergence speed and less training stability than TD3.
 
-### D. Hyperparameter search space and selected results
+### Appendix D. Hyperparameter search space and selected results
 
 Similar to De Moor et al. (2022), for each method and each hyperparameter in the experiments, a finite set of candidate values was predefined. The optimal combination was then selected based on performance on the validation set. It is worth noting that due to computational limitations, an exhaustive search over all possible combinations was infeasible. Therefore, we adopted a random grid search strategy. The results reported are relatively conservative, and more extensive hyperparameter tuning could potentially further improve the performance of the proposed method.
 
