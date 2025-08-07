@@ -24,33 +24,27 @@ To run the code, you will need to make sure that you have the following dependen
 
 ### A. The time difference correlation analysis (TDCA) method
 
-This section introduces the principles and process of feature selection using the TDCA method. Denote the total candidate feature number as $N_f$, let $L$ ($L>0$) represent the lag period of a feature sequence ahead of the arrival time, and $L_{\text{max}}$ be the maximum lag period ($L\le L_{\text{max}}$). The expression of the candidate feature set is 
+This section introduces the principles and process of feature selection using the TDCA method. Denote the total candidate feature number as $N\_f$, let $L$ ($L>0$) represent the lag period of a feature sequence ahead of the arrival time, and $L\_{\\text{max}}$ be the maximum lag period ($L\\le L\_{\\text{max}}$). The expression of the candidate feature set is 
 
-$$
-\mathbb{F}_L=\left\{\mathbf{F}_{1,L},\mathbf{F}_{2,L},\ldots ,\mathbf{F}_{n,L},\ldots ,\mathbf{F}_{N_f},L \right\},L=1,2,\ldots ,L_{\max}, \tag{A.1}
-$$
+$\\mathbb{F}\_L=\\left\\{\\mathbf{F}\_{1,L},\\mathbf{F}\_{2,L},\\ldots ,\\mathbf{F}\_{n,L},\\ldots ,\\mathbf{F}\_{N\_f},L \\right\\},L=1,2,\\ldots ,L\_{\\max}$,  (A.1)
 
-where ${{\mathbf{F}}_{n,L}}$ represents a feature sequence.
+where $\\mathbf{F}\_{n,L}$ represents a feature sequence.
 
 We assess the correlation between the target and the feature sequences at various lag periods to optimally choose features for model training. Metrics for correlation measurement encompass the distance correlation coefficient (Székely et al., 2007), Pearson correlation coefficient (Rodgers and Nicewander, 1988), and Spearman correlation coefficient (Myers et al., 2010) and the copula entropy (Ma, 2021). We extensively employ these correlation coefficients, and the assessment criterion is determined by taking the maximum of their absolute values. Let $\mathbf{D}$ represent the demand sequence ending at the arrival time. The formula for the absolute correlation is expressed as 
 
-$$
-{{f}_{R}}\left( {{\mathbf{F}}_{n,L}},\mathbf{D} \right)=\underset{f\in \left\{ \operatorname{Distance},\operatorname{Pearson},\operatorname{Spearman},\text{CopEnt} \right\}}{\mathop{\max }}\,\left| f\left( {{\mathbf{F}}_{n,L}},\mathbf{D} \right) \right|, \tag{A.2}
-$$
+$f\_R\\left(\mathbf{F}\_{n,L},\\mathbf{D} \\right)=\\underset{f\\in \\left\\{\\text{Distance},\\text{Pearson},\\text{Spearman},\\text{CopEnt}\\right\\}}{\\mathop{\\max }}\\,\\left|f\\left(\\mathbf{F}\_{n,L},\\mathbf{D}\\right)\\right|$,  (A.2)
 
 where "Distance", "Spearman", "Pearson", and "CopEnt" are the functions of the distance correlation, Pearson, Spearman and the Copula entropy, respectively. The implementation process is as follows: 
 
-First, initiate the screening process for candidate features by computing the absolute correlation between each feature sequence with various lag periods before the arrival time and the demand sequence at the arrival time, utilizing Eq. (A.2). Establish an appropriate screening threshold $\hat{r}_1$, as the screening criterion, representing the minimum correlation between the demand and the selected features. Features meeting the condition $f_R \left(\mathbf{F}_{n,L},\mathbf{D}\right)\ge \hat{r}_1$ are chosen, and the set of selected features is defined as $\mathcal{X}$. 
+First, initiate the screening process for candidate features by computing the absolute correlation between each feature sequence with various lag periods before the arrival time and the demand sequence at the arrival time, utilizing Eq. (A.2). Establish an appropriate screening threshold $\\hat{r}\_1$, as the screening criterion, representing the minimum correlation between the demand and the selected features. Features meeting the condition $f_R \\left(\\mathbf{F}\_{n,L},\\mathbf{D}\\right)\\ge \\hat{r}\_1$ are chosen, and the set of selected features is defined as $\\mathcal{X}$. 
 
-Second, to address multicollinearity among the initially screened features, the Pearson correlation coefficient is employed. The removal criterion is defined by the threshold ${{\hat{r}}_{2}}$, which represents the maximum permissible correlation among the chosen features. Feature pairs with high linear correlation in set $\mathcal{X}$ are identified, and the feature with the relatively weaker correlation to the demand sequence is removed from the set. Negative correlations are also considered in this procedure, as highly anti-correlated input features are also collinear. 
+Second, to address multicollinearity among the initially screened features, the Pearson correlation coefficient is employed. The removal criterion is defined by the threshold $\\hat{r}\_2$, which represents the maximum permissible correlation among the chosen features. Feature pairs with high linear correlation in set $\\mathcal{X}$ are identified, and the feature with the relatively weaker correlation to the demand sequence is removed from the set. Negative correlations are also considered in this procedure, as highly anti-correlated input features are also collinear. 
 
-Finally, repeat the second step, until the Pearson correlation between any two features in set $\mathcal{X}$ is no longer greater than ${{\hat{r}}_{2}}$. Consequently, the features in set $\mathcal{X}=\left\{ {{\mathbf{x}}_{1}},{{\mathbf{x}}_{2}},\ldots ,{{\mathbf{x}}_{{{N}_{p}}}} \right\}$ represent the selected appropriate features, with the feature count ${{N}_{p}}$. 
+Finally, repeat the second step, until the Pearson correlation between any two features in set $\\mathcal{X}$ is no longer greater than $\\hat{r}\_2$. Consequently, the features in set $\\mathcal{X}=\\{\\mathbf{x}\_1,\\mathbf{x}\_2,\\ldots,\\mathbf{x}\_{N\_p} \\}$ represent the selected appropriate features, with the feature count $N\_p$. 
 
-We extract the values of each feature in the features set $\mathcal{X}$ at time $t$, represented as ${{x}_{n,t}}\in {{\mathbf{x}}_{n}}$, to form the demand-related feature vector at time $t$, expressed as 
+We extract the values of each feature in the features set $\\mathcal{X}$ at time $t$, represented as $x\_{n,t}\\in \\mathbf{x}\_n$, to form the demand-related feature vector at time $t$, expressed as 
 
-$$
-{{\mathbf{X}}_{t}}=\left( {{x}_{1,t}},{{x}_{2,t}},\ldots ,{{x}_{{{N}_{p}},t}} \right). \tag{A.3}
-$$
+$\\mathbf{X}\_t=\\left(x\_{1,t},x\_{2,t},\\ldots,x\_{N\_p,t} \\right)$.  (A.3)
 
 Here, the screening thresholds and relevant removal criteria are hyperparameters determined through repeated experiments.
 
@@ -122,10 +116,7 @@ In our experiments, the benchmark methods used for comparison include the $(S,s)
 
 (1) $(S,s)$ Policy (Arrow et al., 1958): This is a classical periodic inventory control strategy. The core rule is: at the end of each period, the inventory level is checked; if the current inventory is less than or equal to threshold $s$ (reorder point), a replenishment is triggered to raise the inventory to the target level $S$; otherwise, no replenishment is performed. $S$ and $s$ are determined based on historical sales statistics such as the mean and standard deviation, where $s$ is set to the historical mean demand and $S$ is calculated as: 
 
-$$
-S=\mu+z\times\sigma,\;z=\Phi^{-1}\left(\frac{c_b}{c_b+c_h}\right), 
-\tag{C.1}
-$$
+$S=\\mu+z\\times\\sigma,\\quad z=\\Phi^{-1}\\left(\\frac{c\_b}{c\_b+c\_h}\\right)$,  (C.1)
 
 where $\Phi^{-1}$ is the inverse of the standard normal distribution, and $\mu$ and $\sigma$ represent the estimated mean and standard deviation of demand based on historical sales.
 
