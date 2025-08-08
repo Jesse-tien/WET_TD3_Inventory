@@ -20,7 +20,62 @@ To run the code, you will need to make sure that you have the following dependen
 
 `Python 3.11`,  `Cuda 11.2.128`,  `PyTorch 2.0.1`, `numpy`, `pandas`, `jupyter`, `notebook`, `selenium`, `requests`, `calendar`, `xlwt`, `urllib`, `json`, `scipy`, `scikit-learn`, `jieba`, `matplotlib`, `docplex`, `matplotlib`, `xlsxwriter`
 
-## 2. Supplemental materials
+## 2. Workflow
+
+$$
+\left\{ \begin{array}{l}
+\text{README.md \qquad \# \; Introduction of data, code and detailed experimental process.}\\
+\text{Collect\_data}\left\{ \begin{array}{l}
+\text{Get\_search\_data}\left\{ \begin{array}{l}
+\text{tmp/ \qquad\# \; Save intermediate process files.}\\
+\text{Merged\_data/  \qquad \# \; Save the merged and sorted search engine data tables.}\\
+\text{Get\_search.ipynb \qquad \# \;  Used to crawl Baidu index data.}\\
+\end{array} \right.\\
+\text{Get\_reviews}\left\{ \begin{array}{l}
+\text{UserAgent\_set.pickle \qquad \# \; Necessary components.}\\
+\text{Get\_reviews.ipynb \qquad \# \; Used to crawl online review data.}\\
+\text{Reviews/ \qquad \# \; Save textual review data tables.}
+\end{array} \right.\\
+\text{Other\_features}\left\{ \begin{array}{l}
+\text{Macro\_data.xlsx \qquad \# \; Downloaded and processed macroeconomic data.}\\
+\text{Sales\_data/ \qquad \# \; Downloaded and processed history sales data.}
+\end{array} \right.
+\end{array} \right.\\
+\text{Preprocess\_data}\left\{ \begin{array}{l}
+\text{cache/ \qquad \# \; Save intermediate process files.}\\
+\text{Describe\_sales\_data.ipynb \qquad \# \; Make descriptive statistics on sales data.}\\
+\text{Filter\_results/ \qquad \# \; Time difference correlation analysis results.}\\
+\text{Numerical\_feature\_engineering.ipynb \qquad \# \; Select numerical features by time difference correlation analysis.}\\
+\text{Preprocess\_data.ipynb \qquad \# \; Combine and process numerical and textual feature data to form the input required by subsequent programs.}\\
+\text{Inputs\_data/ \qquad \# \; Save the generated model inputs.}
+\end{array} \right.\\
+\text{Methods}\left\{ \begin{array}{l}
+\text{HyperParams.py \qquad \# \; Alternative hyperparameter combinations for ablation benchmarks.}\\
+\text{HyperParamsCompareX.py \qquad \# \; Alternative hyperparameter combinations for comparation benchmarks.}\\
+\text{Roberts\_?.py \qquad \# \; Reinforcement learning algorithms of the ? method.}\\
+\text{?\_Run.py \qquad \# \;  The program of running the ? method alone.}\\
+\text{Run\_new.py \qquad \# \;  The program of running all methods.}\\
+\text{checkpoints/ \qquad \# \; Save the trained model.}\\
+\end{array} \right.\\
+\text{Outputs/ \qquad \# \; Save the test results.}\\
+\text{Analysis}\left\{ \begin{array}{l}
+\text{Analysis\_Benchmarks.ipynb \qquad \# \; Compare with other methods, and draw the diagrams and tables in the paper.}\\
+\text{utils.py \qquad \# \; Some tool functions.}\\
+\text{Paper\_outputs/ \qquad \# \; Save the pictures and tables in the paper.}
+\end{array} \right.
+\end{array} \right.
+$$
+
+| No.  | Which results to reproduce                                   | Data File                                                    | Code File                                                    | Expected output                                              |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1    | Get search index data                                        | -                                                            | `Get_search.ipynb` in `Collect_data/Get_search_data/ `       | `S_?.xlsx` in `Collect_data/Get_search_data/Merged_data/`    |
+| 2    | Get textual online review data                               | -                                                            | `Get_reviews.ipynb` in `Collect_data/Get_reviews/ `          | `R_?.xls` in `Collect_data/Get_reviews/Reviews/`             |
+| 3    | Select numerical features by TDCA, and generate inputs required by subsequent programs. | (1) `S_?.xlsx` in `Collect_data/Get_search_data/Merged_data/`; (2) `Macro_data.xlsx` in `Collect_data/Other_features/`; (3) `D_?.xlsx` in `Collect_data/Other_features/Sales_data/`; (4) `R_?.xls` in `Collect_data/Get_reviews/Reviews/`. | `Numerical_feature_engineering.ipynb` and `Preprocess_data.ipynb` in `Preprocess_data/` | `DATASET_?.data` in `Preprocess_data/Inputs_data/`.          |
+| 4    | Determine hyperparameters and train all  models.             | `DATASET_?.data` in `Preprocess_data/Inputs_data/`.          | `Run_new.py` in `Methods/`                                   | Trained models are saved in `Methods/checkpoints/`. Tested results are saved in `Outputs/` |
+| 5    | Compare and visually analyze above test outputs.             | -                                                            | `Analysis_Benchmarks.ipynb`                                  | All the figures and tables of the paper are generated in the folder `Analysis/Paper_outputs/`. |
+
+
+## 3. Supplemental materials
 
 ### Appendix A. The time difference correlation analysis (TDCA) method
 
@@ -581,13 +636,3 @@ The hyperparameters involved in PPO, along with their symbols, meanings, and sea
 - Rodgers, J.L., \& Nicewander, W.A. (1988). Thirteen Ways to Look at the Correlation Coefficient. *The American Statistician*, 42(1), 59-66.
 - Schulman, J., Wolski, F., Dhariwal, P., Radford, A., \& Klimov, O. (2017). Proximal policy optimization algorithms. *arXiv preprint*, Article arXiv:1707.06347.
 - Székely, G.J., Rizzo, M.L., \& Bakirov, N.K. (2007). Measuring and testing dependence by correlation of distances. *Annals of Statistics*, 35(6), 2769-2794.
-
-## 3. Workflow
-
-| No.  | Which results to reproduce                                   | Data File                                                    | Code File                                                    | Expected output                                              |
-| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1    | Get search index data                                        | -                                                            | `Get_search.ipynb` in `Collect_data/Get_search_data/ `       | `S_?.xlsx` in `Collect_data/Get_search_data/Merged_data/`    |
-| 2    | Get textual online review data                               | -                                                            | `Get_reviews.ipynb` in `Collect_data/Get_reviews/ `          | `R_?.xls` in `Collect_data/Get_reviews/Reviews/`             |
-| 3    | Select numerical features by TDCA, and generate inputs required by subsequent programs. | (1) `S_?.xlsx` in `Collect_data/Get_search_data/Merged_data/`; (2) `Macro_data.xlsx` in `Collect_data/Other_features/`; (3) `D_?.xlsx` in `Collect_data/Other_features/Sales_data/`; (4) `R_?.xls` in `Collect_data/Get_reviews/Reviews/`. | `Numerical_feature_engineering.ipynb` and `Preprocess_data.ipynb` in `Preprocess_data/` | `DATASET_?.data` in `Preprocess_data/Inputs_data/`.          |
-| 4    | Determine hyperparameters and train all  models.             | `DATASET_?.data` in `Preprocess_data/Inputs_data/`.          | `Run_new.py` in `Methods/`                                   | Trained models are saved in `Methods/checkpoints/`. Tested results are saved in `Outputs/` |
-| 5    | Compare and visually analyze above test outputs.             | -                                                            | `Analysis_Benchmarks.ipynb`                                  | All the figures and tables of the paper are generated in the folder `Analysis/Paper_outputs/`. |
