@@ -22,7 +22,7 @@ To run the code, you will need to make sure that you have the following dependen
 
 ## 2. Folder structure
 
-![](https://github.com/Jesse-tien/WET_TD3_Inventory/blob/main/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png?raw=true)
+![](https://github.com/Jesse-tien/WET_TD3_Inventory/blob/main/Files.png?raw=true)
 
 ## 3. Workflow
 
