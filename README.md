@@ -22,49 +22,7 @@ To run the code, you will need to make sure that you have the following dependen
 
 ## 2. Workflow
 
-$$
-\left\{ \begin{array}{l}
-\text{README.md \qquad \# \; Introduction of data, code and detailed experimental process.}\\
-\text{Collect\_data}\left\{ \begin{array}{l}
-\text{Get\_search\_data}\left\{ \begin{array}{l}
-\text{tmp/ \qquad\# \; Save intermediate process files.}\\
-\text{Merged\_data/  \qquad \# \; Save the merged and sorted search engine data tables.}\\
-\text{Get\_search.ipynb \qquad \# \;  Used to crawl Baidu index data.}\\
-\end{array} \right.\\
-\text{Get\_reviews}\left\{ \begin{array}{l}
-\text{UserAgent\_set.pickle \qquad \# \; Necessary components.}\\
-\text{Get\_reviews.ipynb \qquad \# \; Used to crawl online review data.}\\
-\text{Reviews/ \qquad \# \; Save textual review data tables.}
-\end{array} \right.\\
-\text{Other\_features}\left\{ \begin{array}{l}
-\text{Macro\_data.xlsx \qquad \# \; Downloaded and processed macroeconomic data.}\\
-\text{Sales\_data/ \qquad \# \; Downloaded and processed history sales data.}
-\end{array} \right.
-\end{array} \right.\\
-\text{Preprocess\_data}\left\{ \begin{array}{l}
-\text{cache/ \qquad \# \; Save intermediate process files.}\\
-\text{Describe\_sales\_data.ipynb \qquad \# \; Make descriptive statistics on sales data.}\\
-\text{Filter\_results/ \qquad \# \; Time difference correlation analysis results.}\\
-\text{Numerical\_feature\_engineering.ipynb \qquad \# \; Select numerical features by time difference correlation analysis.}\\
-\text{Preprocess\_data.ipynb \qquad \# \; Combine and process numerical and textual feature data to form the input required by subsequent programs.}\\
-\text{Inputs\_data/ \qquad \# \; Save the generated model inputs.}
-\end{array} \right.\\
-\text{Methods}\left\{ \begin{array}{l}
-\text{HyperParams.py \qquad \# \; Alternative hyperparameter combinations for ablation benchmarks.}\\
-\text{HyperParamsCompareX.py \qquad \# \; Alternative hyperparameter combinations for comparation benchmarks.}\\
-\text{Roberts\_?.py \qquad \# \; Reinforcement learning algorithms of the ? method.}\\
-\text{?\_Run.py \qquad \# \;  The program of running the ? method alone.}\\
-\text{Run\_new.py \qquad \# \;  The program of running all methods.}\\
-\text{checkpoints/ \qquad \# \; Save the trained model.}\\
-\end{array} \right.\\
-\text{Outputs/ \qquad \# \; Save the test results.}\\
-\text{Analysis}\left\{ \begin{array}{l}
-\text{Analysis\_Benchmarks.ipynb \qquad \# \; Compare with other methods, and draw the diagrams and tables in the paper.}\\
-\text{utils.py \qquad \# \; Some tool functions.}\\
-\text{Paper\_outputs/ \qquad \# \; Save the pictures and tables in the paper.}
-\end{array} \right.
-\end{array} \right.
-$$
+
 
 | No.  | Which results to reproduce                                   | Data File                                                    | Code File                                                    | Expected output                                              |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
