@@ -22,7 +22,7 @@ To run the code, you will need to make sure that you have the following dependen
 
 ## 2. Workflow
 
-
+![](https://github.com/Jesse-tien/WET_TD3_Inventory/blob/main/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png?raw=true)
 
 | No.  | Which results to reproduce                                   | Data File                                                    | Code File                                                    | Expected output                                              |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
