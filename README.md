@@ -581,3 +581,13 @@ The hyperparameters involved in PPO, along with their symbols, meanings, and sea
 - Rodgers, J.L., \& Nicewander, W.A. (1988). Thirteen Ways to Look at the Correlation Coefficient. *The American Statistician*, 42(1), 59-66.
 - Schulman, J., Wolski, F., Dhariwal, P., Radford, A., \& Klimov, O. (2017). Proximal policy optimization algorithms. *arXiv preprint*, Article arXiv:1707.06347.
 - Székely, G.J., Rizzo, M.L., \& Bakirov, N.K. (2007). Measuring and testing dependence by correlation of distances. *Annals of Statistics*, 35(6), 2769-2794.
+
+## 3. Workflow
+
+| No.  | Which results to reproduce                                   | Data File                                                    | Code File                                                    | Expected output                                              |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1    | Get search index data                                        | -                                                            | `Get_search.ipynb` in `Collect_data/Get_search_data/ `       | `S_?.xlsx` in `Collect_data/Get_search_data/Merged_data/`    |
+| 2    | Get textual online review data                               | -                                                            | `Get_reviews.ipynb` in `Collect_data/Get_reviews/ `          | `R_?.xls` in `Collect_data/Get_reviews/Reviews/`             |
+| 3    | Select numerical features by TDCA, and generate inputs required by subsequent programs. | (1) `S_?.xlsx` in `Collect_data/Get_search_data/Merged_data/`; (2) `Macro_data.xlsx` in `Collect_data/Other_features/`; (3) `D_?.xlsx` in `Collect_data/Other_features/Sales_data/`; (4) `R_?.xls` in `Collect_data/Get_reviews/Reviews/`. | `Numerical_feature_engineering.ipynb` and `Preprocess_data.ipynb` in `Preprocess_data/` | `DATASET_?.data` in `Preprocess_data/Inputs_data/`.          |
+| 4    | Determine hyperparameters and train all  models.             | `DATASET_?.data` in `Preprocess_data/Inputs_data/`.          | `Run_new.py` in `Methods/`                                   | Trained models are saved in `Methods/checkpoints/`. Tested results are saved in `Outputs/` |
+| 5    | Compare and visually analyze above test outputs.             | -                                                            | `Analysis_Benchmarks.ipynb`                                  | All the figures and tables of the paper are generated in the folder `Analysis/Paper_outputs/`. |
