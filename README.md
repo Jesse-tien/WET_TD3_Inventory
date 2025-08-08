@@ -20,9 +20,11 @@ To run the code, you will need to make sure that you have the following dependen
 
 `Python 3.11`,  `Cuda 11.2.128`,  `PyTorch 2.0.1`, `numpy`, `pandas`, `jupyter`, `notebook`, `selenium`, `requests`, `calendar`, `xlwt`, `urllib`, `json`, `scipy`, `scikit-learn`, `jieba`, `matplotlib`, `docplex`, `matplotlib`, `xlsxwriter`
 
-## 2. Workflow
+## 2. Folder structure
 
 ![](https://github.com/Jesse-tien/WET_TD3_Inventory/blob/main/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png?raw=true)
+
+## 3. Workflow
 
 | No.  | Which results to reproduce                                   | Data File                                                    | Code File                                                    | Expected output                                              |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -33,7 +35,7 @@ To run the code, you will need to make sure that you have the following dependen
 | 5    | Compare and visually analyze above test outputs.             | -                                                            | `Analysis_Benchmarks.ipynb`                                  | All the figures and tables of the paper are generated in the folder `Analysis/Paper_outputs/`. |
 
 
-## 3. Supplemental materials
+## 4. Supplemental materials
 
 ### Appendix A. The time difference correlation analysis (TDCA) method
 
